@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo — Baralho Cigano</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --esmeralda: #1a4a2e;
+    --esmeralda-medio: #256b41;
+    --esmeralda-claro: #2e8b57;
+    --dourado: #c9a84c;
+    --dourado-claro: #e8c96a;
+    --dourado-palido: #f5e6b0;
+    --creme: #faf6ee;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--esmeralda);
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--creme);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .ornamento {
+    color: var(--dourado);
+    font-size: 1.4rem;
+    letter-spacing: 0.3em;
+    opacity: 0.8;
+  }
+
+  /* HEADER */
+  header {
+    text-align: center;
+    padding: 3.5rem 1.5rem 2.5rem;
+    background: radial-gradient(ellipse at top, #0d2c1a 0%, var(--esmeralda) 70%);
+    border-bottom: 1px solid rgba(201,168,76,0.35);
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='0.04'%3E%3Cpath d='M30 0 L31 29 L60 30 L31 31 L30 60 L29 31 L0 30 L29 29Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  .estrela-header {
+    font-size: 2rem;
+    color: var(--dourado);
+    display: block;
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.5em;
+    opacity: 0.85;
+  }
+
+  header h1 {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: clamp(1.6rem, 5vw, 2.8rem);
+    color: var(--dourado-claro);
+    letter-spacing: 0.06em;
+    line-height: 1.2;
+    text-shadow: 0 0 40px rgba(201,168,76,0.4);
+    margin-bottom: 0.6rem;
+  }
+
+  header .subtitulo {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    color: var(--dourado-palido);
+    opacity: 0.85;
+    letter-spacing: 0.08em;
+    margin-bottom: 1.5rem;
+  }
+
+  .linha-dourada {
+    width: 180px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--dourado), transparent);
+    margin: 0.8rem auto;
+  }
+
+  /* INTRO */
+  .intro {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+  }
+
+  .intro p {
+    font-size: clamp(1rem, 2.5vw, 1.15rem);
+    line-height: 1.85;
+    color: var(--dourado-palido);
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  /* SEÇÃO */
+  .secao-titulo {
+    text-align: center;
+    padding: 2rem 1.5rem 0.5rem;
+  }
+
+  .secao-titulo h2 {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: clamp(1rem, 3vw, 1.4rem);
+    color: var(--dourado);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .secao-titulo .secao-desc {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: rgba(245,230,176,0.65);
+    margin-top: 0.4rem;
+  }
+
+  /* GRID */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 1.5rem 1.5rem 2.5rem;
+  }
+
+  /* CARD */
+  .card {
+    background: linear-gradient(145deg, #0f3320 0%, #1a4a2e 60%, #0d2c1a 100%);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 2px;
+    padding: 2rem 1.6rem 1.8rem;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--dourado), transparent);
+  }
+
+  .card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201,168,76,0.4), transparent);
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 20px rgba(201,168,76,0.1);
+  }
+
+  .card-icone {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.8rem;
+    text-align: center;
+  }
+
+  .card-badge {
+    display: inline-block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--esmeralda-claro);
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.25);
+    padding: 0.2rem 0.7rem;
+    border-radius: 20px;
+    margin-bottom: 0.8rem;
+  }
+
+  .card h3 {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: clamp(0.85rem, 2.2vw, 1.05rem);
+    color: var(--dourado-claro);
+    line-height: 1.35;
+    margin-bottom: 0.6rem;
+    letter-spacing: 0.04em;
+  }
+
+  .card .descricao {
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    line-height: 1.75;
+    color: rgba(245,230,176,0.82);
+    font-weight: 300;
+    margin-bottom: 1.2rem;
+  }
+
+  .card .perguntas-titulo {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--dourado);
+    margin-bottom: 0.5rem;
+    opacity: 0.9;
+  }
+
+  .card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .card ul li {
+    font-size: 0.88rem;
+    color: rgba(245,230,176,0.7);
+    padding: 0.25rem 0 0.25rem 1.2rem;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .card ul li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: var(--dourado);
+    font-size: 0.6rem;
+    top: 0.4rem;
+    opacity: 0.7;
+  }
+
+  /* CARD DESTAQUE */
+  .card-destaque {
+    background: linear-gradient(145deg, #0a2518 0%, #163b28 50%, #0a2518 100%);
+    border-color: rgba(201,168,76,0.55);
+    grid-column: 1 / -1;
+  }
+
+  .card-destaque::before {
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--dourado-claro), var(--dourado), var(--dourado-claro), transparent);
+  }
+
+  .card-destaque h3 {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+  }
+
+  .destaque-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.8rem;
+    margin-top: 1rem;
+  }
+
+  .destaque-item {
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.15);
+    padding: 0.8rem 1rem;
+    border-radius: 2px;
+  }
+
+  .destaque-item strong {
+    display: block;
+    color: var(--dourado);
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+
+  .destaque-item span {
+    font-size: 0.88rem;
+    color: rgba(245,230,176,0.7);
+    line-height: 1.5;
+  }
+
+  /* FORMATOS */
+  .formatos {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 1.5rem 3rem;
+  }
+
+  .formatos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .formato-item {
+    text-align: center;
+    padding: 1.4rem 1rem;
+    border: 1px solid rgba(201,168,76,0.2);
+    background: rgba(201,168,76,0.04);
+  }
+
+  .formato-item .formato-icone {
+    font-size: 1.6rem;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .formato-item p {
+    font-size: 0.9rem;
+    color: var(--dourado-palido);
+    opacity: 0.8;
+    line-height: 1.5;
+  }
+
+  .formato-item strong {
+    display: block;
+    color: var(--dourado);
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    border-top: 1px solid rgba(201,168,76,0.2);
+    background: rgba(0,0,0,0.2);
+  }
+
+  footer p {
+    font-family: 'IM Fell English', serif;
+    font-style: italic;
+    color: var(--dourado);
+    opacity: 0.7;
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+  }
+
+  .divisor {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+  }
+
+  .divisor-linha {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201,168,76,0.4));
+  }
+
+  .divisor-linha:last-child {
+    background: linear-gradient(90deg, rgba(201,168,76,0.4), transparent);
+  }
+
+  .divisor span {
+    color: var(--dourado);
+    font-size: 1.1rem;
+    opacity: 0.7;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="estrela-header">✦ ✦ ✦</span>
+  <h1>Baralho Cigano</h1>
+  <p class="subtitulo">Leituras que revelam o que o coração sente</p>
+  <div class="linha-dourada"></div>
+  <p class="ornamento">♦ ✦ ♦</p>
+</header>
+
+<div class="intro">
+  <p>As cartas ciganas carregam séculos de sabedoria. Cada tiragem é um espelho da sua energia — revelando caminhos, sentimentos ocultos e a verdade que você precisa ouvir agora.</p>
+</div>
+
+<!-- ❤️ AMOR & RELACIONAMENTOS -->
+<div class="divisor"><div class="divisor-linha"></div><span>✦</span><div class="divisor-linha"></div></div>
+<div class="secao-titulo">
+  <p class="ornamento" style="font-size:1rem; margin-bottom:0.4rem;">💕</p>
+  <h2>Amor & Relacionamentos</h2>
+  <p class="secao-desc">Para quem busca clareza no coração</p>
+</div>
+<div class="grid">
+
+  <div class="card">
+    <span class="card-icone">🌹</span>
+    <span class="card-badge">3 cartas</span>
+    <h3>Leitura do Coração</h3>
+    <p class="descricao">Três cartas revelam a situação atual, o que está no caminho e o conselho das cartas para você agora.</p>
+    <p class="perguntas-titulo">Perguntas frequentes:</p>
+    <ul>
+      <li>Ele sente algo por mim?</li>
+      <li>Devo dar uma chance?</li>
+      <li>Como ele me vê?</li>
+      <li>Ele vai voltar?</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <span class="card-icone">⚖️</span>
+    <span class="card-badge">Cruz · 4 cartas</span>
+    <h3>A Cruz do Amor</h3>
+    <p class="descricao">Revela o que está acontecendo, o que interfere, o que você pode fazer e o provável desfecho da relação.</p>
+    <p class="perguntas-titulo">Perguntas frequentes:</p>
+    <ul>
+      <li>Por que nossa relação não evolui?</li>
+      <li>O que está nos separando?</li>
+      <li>Temos futuro juntos?</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <span class="card-icone">🔮</span>
+    <span class="card-badge">5 a 7 cartas</span>
+    <h3>Os Dois Lados do Amor</h3>
+    <p class="descricao">Revela o passado da relação, o momento atual, os sentimentos de cada lado, o obstáculo e a tendência futura.</p>
+    <p class="perguntas-titulo">Perguntas frequentes:</p>
+    <ul>
+      <li>O que ele sente de verdade?</li>
+      <li>Existe um terceiro envolvido?</li>
+      <li>Temos chances de reconciliação?</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <span class="card-icone">🌸</span>
+    <span class="card-badge">Afrodite</span>
+    <h3>Templo de Afrodite</h3>
+    <p class="descricao">Uma tiragem sagrada dedicada ao amor e à sedução. Revela o que está acontecendo no campo afetivo e como despertar ou fortalecer a atração.</p>
+    <p class="perguntas-titulo">Perguntas frequentes:</p>
+    <ul>
+      <li>Ele é atraído por mim?</li>
+      <li>Como fortalecer nossa conexão?</li>
+      <li>O que estou irradiando no amor?</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <span class="card-icone">🍷</span>
+    <span class="card-badge">Sentimentos profundos</span>
+    <h3>Taça do Amor</h3>
+    <p class="descricao">Mergulha fundo nos sentimentos — os seus e os dele. Revela o que está guardado no coração de cada um e os desejos não ditos.</p>
+    <p class="perguntas-titulo">Perguntas frequentes:</p>
+    <ul>
+      <li>O que ele sente no fundo?</li>
+      <li>Existe amor verdadeiro aqui?</li>
+      <li>O que cada um deseja de verdade?</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <span class="card-icone">🛤️</span>
+    <span class="card-badge">Encontros</span>
+    <h3>Caminho do Encontro</h3>
+    <p class="descricao">Para quem quer saber quando e como o amor vai chegar — ou se a pessoa que já está na vida é a certa.</p>
+    <p class="perguntas-titulo">Perguntas frequentes:</p>
+    <ul>
+      <li>Quando vou encontrar meu par?</li>
+      <li>Essa pessoa é para mim?</li>
+      <li>O amor está próximo?</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- 🎯 PERGUNTAS & RESPOSTAS RÁPIDAS -->
+<div class="divisor"><div class="divisor-linha"></div><span>✦</span><div class="divisor-linha"></div></div>
+<div class="secao-titulo">
+  <p class="ornamento" style="font-size:1rem; margin-bottom:0.4rem;">🎯</p>
+  <h2>Perguntas & Respostas Rápidas</h2>
+  <p class="secao-desc">Clareza direta para quem tem uma dúvida específica</p>
+</div>
+<div class="grid">
+
+  <div class="card">
+    <span class="card-icone">✅</span>
+    <span class="card-badge">Resposta direta</span>
+    <h3>Sim ou Não</h3>
+    <p class="descricao">As cartas respondem diretamente à sua pergunta, sem rodeios. Ideal para dúvidas pontuais que pedem uma decisão imediata.</p>
+    <p class="perguntas-titulo">Exemplos:</p>
+    <ul>
+      <li>Ele vai me procurar?</li>
+      <li>Vou conseguir esse emprego?</li>
+      <li>Devo aceitar essa proposta?</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <span class="card-icone">❓</span>
+    <span class="card-badge">Foco total</span>
+    <h3>Pergunta Objetiva</h3>
+    <p class="descricao">Focada em uma única pergunta, com cartas que aprofundam a resposta com contexto e orientação claros.</p>
+    <p class="perguntas-titulo">Ideal para:</p>
+    <ul>
+      <li>Decisões importantes</li>
+      <li>Situações que precisam de clareza</li>
+      <li>Quando você já sabe a pergunta</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <span class="card-icone">🔍</span>
+    <span class="card-badge">Aprofundada</span>
+    <h3>Pergunta Detalhada</h3>
+    <p class="descricao">Para perguntas que envolvem nuances e múltiplos fatores. As cartas vão além da resposta e revelam o que está por trás da situação.</p>
+    <p class="perguntas-titulo">Ideal para:</p>
+    <ul>
+      <li>Situações complexas e delicadas</li>
+      <li>Quando você quer entender o porquê</li>
+      <li>Perguntas com muitos lados</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <span class="card-icone">⏱️</span>
+    <span class="card-badge">Sessão ao vivo</span>
+    <h3>Tiragem de 30 Minutos</h3>
+    <p class="descricao">Sessão ao vivo de 30 minutos com perguntas em tempo real e orientação das cartas. Perfeita para quem quer interação e respostas na hora.</p>
+    <p class="perguntas-titulo">O que inclui:</p>
+    <ul>
+      <li>Leitura ao vivo por vídeo ou presencial</li>
+      <li>Espaço para perguntas livres</li>
+      <li>Orientação personalizada</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- 💰 FINANCEIRO & PROSPERIDADE -->
+<div class="divisor"><div class="divisor-linha"></div><span>✦</span><div class="divisor-linha"></div></div>
+<div class="secao-titulo">
+  <p class="ornamento" style="font-size:1rem; margin-bottom:0.4rem;">💰</p>
+  <h2>Financeiro & Prosperidade</h2>
+  <p class="secao-desc">O que as cartas dizem sobre seu dinheiro e abundância</p>
+</div>
+<div class="grid">
+
+  <div class="card">
+    <span class="card-icone">💸</span>
+    <span class="card-badge">Prosperidade</span>
+    <h3>Fluxo do Financeiro</h3>
+    <p class="descricao">Voltada exclusivamente para a vida financeira. Revela o que está bloqueando a prosperidade, o que está chegando e quais caminhos abrir para atrair abundância.</p>
+    <p class="perguntas-titulo">Perguntas frequentes:</p>
+    <ul>
+      <li>Por que o dinheiro não fica?</li>
+      <li>Minha situação financeira vai melhorar?</li>
+      <li>Que área me trará mais retorno?</li>
+      <li>Existe bloqueio na minha prosperidade?</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- 🌿 SAÚDE & BEM-ESTAR -->
+<div class="divisor"><div class="divisor-linha"></div><span>✦</span><div class="divisor-linha"></div></div>
+<div class="secao-titulo">
+  <p class="ornamento" style="font-size:1rem; margin-bottom:0.4rem;">🌿</p>
+  <h2>Saúde & Bem-Estar</h2>
+  <p class="secao-desc">Orientação energética para o corpo e a mente</p>
+</div>
+<div class="grid">
+
+  <div class="card">
+    <span class="card-icone">🍃</span>
+    <span class="card-badge">Saúde energética</span>
+    <h3>Perguntas Sobre a Saúde</h3>
+    <p class="descricao">Uma leitura de orientação energética sobre a saúde física e emocional. As cartas indicam o que está pesando no corpo e na mente e quais cuidados são necessários agora.</p>
+    <p class="perguntas-titulo">Perguntas frequentes:</p>
+    <ul>
+      <li>O que está afetando minha energia?</li>
+      <li>Minha recuperação virá logo?</li>
+      <li>O que preciso cuidar em mim?</li>
+      <li>Como está minha saúde emocional?</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- 🌑 ENERGIAS & ESPIRITUALIDADE -->
+<div class="divisor"><div class="divisor-linha"></div><span>✦</span><div class="divisor-linha"></div></div>
+<div class="secao-titulo">
+  <p class="ornamento" style="font-size:1rem; margin-bottom:0.4rem;">🌑</p>
+  <h2>Energias & Espiritualidade</h2>
+  <p class="secao-desc">O que está nas sombras e como se libertar</p>
+</div>
+<div class="grid">
+
+  <div class="card">
+    <span class="card-icone">🕯️</span>
+    <span class="card-badge">Sombras & Padrões</span>
+    <h3>Templo do Diabo</h3>
+    <p class="descricao">Ilumina o que está nas sombras — vícios, padrões destrutivos, influências ocultas e o que está sabotando sua vida. Poderosa para quem quer se libertar do que prende.</p>
+    <p class="perguntas-titulo">Perguntas frequentes:</p>
+    <ul>
+      <li>O que está me prendendo?</li>
+      <li>Existe algo oculto nessa situação?</li>
+      <li>Como me libertar desse padrão?</li>
+      <li>Quem ou o que me sabota?</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- 📅 VISÃO TEMPORAL -->
+<div class="divisor"><div class="divisor-linha"></div><span>✦</span><div class="divisor-linha"></div></div>
+<div class="secao-titulo">
+  <p class="ornamento" style="font-size:1rem; margin-bottom:0.4rem;">📅</p>
+  <h2>Visão Temporal</h2>
+  <p class="secao-desc">O que vem pela frente — mês a mês ou no ano inteiro</p>
+</div>
+<div class="grid">
+
+  <div class="card">
+    <span class="card-icone">🌙</span>
+    <span class="card-badge">Semicírculo · 14 cartas</span>
+    <h3>O Que Vem Por Aí</h3>
+    <p class="descricao">Uma tiragem voltada para o futuro próximo — até 3 meses. Ótima para quem quer saber o que está chegando nas áreas de amor, trabalho e vida pessoal.</p>
+    <p class="perguntas-titulo">Revela:</p>
+    <ul>
+      <li>O que vem de novo na sua vida</li>
+      <li>Energias e influências ao seu redor</li>
+      <li>Tendências para os próximos meses</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <span class="card-icone">📅</span>
+    <span class="card-badge">Mensal</span>
+    <h3>Tiragem Mensal</h3>
+    <p class="descricao">Uma leitura completa para o mês que está chegando. Revela as energias predominantes, os desafios, as oportunidades e os recados das cartas para cada semana.</p>
+    <p class="perguntas-titulo">Revela:</p>
+    <ul>
+      <li>Energia geral do mês</li>
+      <li>Oportunidades e alertas</li>
+      <li>Orientação semana a semana</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <span class="card-icone">🌟</span>
+    <span class="card-badge">Anual</span>
+    <h3>Tiragem Anual</h3>
+    <p class="descricao">Uma leitura poderosa para o ano inteiro — uma carta para cada mês. Revela o fluxo do ano, os períodos de mais força e as grandes oportunidades que virão.</p>
+    <p class="perguntas-titulo">Revela:</p>
+    <ul>
+      <li>Uma carta por mês do ano</li>
+      <li>Tendências em amor, trabalho e saúde</li>
+      <li>Os meses mais importantes para você</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- 👑 LEITURA COMPLETA -->
+<div class="divisor"><div class="divisor-linha"></div><span>✦</span><div class="divisor-linha"></div></div>
+<div class="secao-titulo">
+  <p class="ornamento" style="font-size:1rem; margin-bottom:0.4rem;">👑</p>
+  <h2>Leitura Completa</h2>
+  <p class="secao-desc">Para quem quer ver tudo de uma vez</p>
+</div>
+<div class="grid">
+
+  <div class="card card-destaque">
+    <span class="card-icone">👑</span>
+    <span class="card-badge">Mesa Real · 36 cartas</span>
+    <h3>Jogo Completo — Mesa Real</h3>
+    <p class="descricao">A leitura mais poderosa do Baralho Cigano. Todas as 36 cartas são abertas para revelar um panorama completo da sua vida — amor, trabalho, saúde, família, padrões que se repetem e o que está por vir.</p>
+    <div class="destaque-grid">
+      <div class="destaque-item">
+        <strong>Amor</strong>
+        <span>Relacionamentos, sentimentos e bloqueios afetivos</span>
+      </div>
+      <div class="destaque-item">
+        <strong>Trabalho</strong>
+        <span>Carreira, finanças e oportunidades</span>
+      </div>
+      <div class="destaque-item">
+        <strong>Saúde</strong>
+        <span>Corpo, mente e energia vital</span>
+      </div>
+      <div class="destaque-item">
+        <strong>Família</strong>
+        <span>Vínculos, conflitos e influências</span>
+      </div>
+      <div class="destaque-item">
+        <strong>Espiritualidade</strong>
+        <span>Padrões ocultos e caminhos da alma</span>
+      </div>
+      <div class="destaque-item">
+        <strong>Futuro</strong>
+        <span>Tendências e o que está por vir</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FORMAS DE ATENDIMENTO -->
+<div class="divisor"><div class="divisor-linha"></div><span>✦</span><div class="divisor-linha"></div></div>
+<div class="secao-titulo">
+  <p class="ornamento" style="font-size:1rem; margin-bottom:0.4rem;">✦ ✦ ✦</p>
+  <h2>Formas de Atendimento</h2>
+</div>
+<div class="formatos">
+  <div class="formatos-grid">
+    <div class="formato-item">
+      <span class="formato-icone">📹</span>
+      <strong>Ao Vivo</strong>
+      <p>Videochamada ou presencial com leitura em tempo real</p>
+    </div>
+    <div class="formato-item">
+      <span class="formato-icone">💬</span>
+      <strong>Por Texto</strong>
+      <p>Leitura completa enviada por WhatsApp ou PDF</p>
+    </div>
+    <div class="formato-item">
+      <span class="formato-icone">🎙️</span>
+      <strong>Por Áudio</strong>
+      <p>Gravação personalizada com sua leitura detalhada</p>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="linha-dourada"></div>
+  <br>
+  <p>✦ As cartas revelam — você escolhe o caminho ✦</p>
+</footer>
+
+</body>
+</html>

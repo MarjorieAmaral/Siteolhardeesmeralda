@@ -367,13 +367,24 @@
     font-size: 1.1rem;
     opacity: 0.7;
   }
+  .contato-bar { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; padding: 1.8rem 1.5rem 0; }
+  .btn-contato { display: inline-flex; align-items: center; gap: 0.5rem; font-family: "Cormorant Garamond", serif; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; padding: 0.65rem 1.4rem; border-radius: 2px; transition: all 0.3s ease; }
+  .btn-whatsapp { background: rgba(37,211,102,0.12); border: 1px solid rgba(37,211,102,0.4); color: #6ddb9a; }
+  .btn-instagram { background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.35); color: #e8c96a; }
+  .cta-section { text-align: center; padding: 3rem 1.5rem 2rem; background: radial-gradient(ellipse at center, #0d2c1a 0%, var(--esmeralda) 70%); border-top: 1px solid rgba(201,168,76,0.2); }
+  .cta-texto { font-family: "IM Fell English", serif; font-style: italic; font-size: clamp(1.1rem, 3vw, 1.4rem); color: var(--dourado-palido); margin-bottom: 1.5rem; letter-spacing: 0.06em; }
+  .btn-agendar { display: inline-flex; align-items: center; gap: 0.6rem; font-family: "Cinzel Decorative", cursive; font-size: clamp(0.85rem, 2vw, 1rem); letter-spacing: 0.12em; text-decoration: none; color: #0d2c1a; background: linear-gradient(135deg, #e8c96a, #c9a84c, #e8c96a); padding: 1rem 2.2rem; border-radius: 2px; box-shadow: 0 4px 24px rgba(201,168,76,0.35); transition: all 0.3s ease; }
+  .btn-agendar:hover { box-shadow: 0 6px 32px rgba(201,168,76,0.55); transform: translateY(-2px); }
+  .cta-botoes { display: flex; justify-content: center; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .btn-instagram-cta { display: inline-flex; align-items: center; gap: 0.5rem; font-family: "Cormorant Garamond", serif; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; padding: 0.65rem 1.4rem; border-radius: 2px; transition: all 0.3s ease; background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.35); color: #e8c96a; }
+  .btn-instagram-cta:hover { background: rgba(201,168,76,0.2); box-shadow: 0 0 16px rgba(201,168,76,0.15); }
 </style>
 </head>
 <body>
 
 <header>
   <span class="estrela-header">✦ ✦ ✦</span>
-  <h1>Baralho Cigano</h1>
+  <h1>Olhar de Esmeralda</h1>
   <p class="subtitulo">Leituras que revelam o que o coração sente</p>
   <div class="linha-dourada"></div>
   <p class="ornamento">♦ ✦ ♦</p>
@@ -730,6 +741,14 @@
     </div>
 
   </div>
+</div>
+
+<div class="cta-section">
+  <p class="cta-texto">✨ Pronta para receber sua leitura?</p>
+  <div class="cta-botoes">
+  <a class="btn-agendar" href="https://wa.me/551320285649?text=Ol%C3%A1%20olhar%20de%20esmeralda%2C%20vim%20pelo%20perfil%20ou%20recomenda%C3%A7%C3%A3o%20gostaria%20de%20agendar%20minha%20leitura%2C%20voc%C3%AA%20poderia%20me%20ajudar%3F" target="_blank">💬 Agendar minha leitura</a>
+  <a class="btn-instagram-cta" href="https://instagram.com/__olhardeesmeralda" target="_blank">📷 @__olhardeesmeralda</a>
+</div>
 </div>
 
 <footer>
